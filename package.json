@@ -1,0 +1,24 @@
+{
+  "name": "pdfreader",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A local-first PDF reader that reflows PDF text like an EPUB.",
+  "scripts": {
+    "postinstall": "node scripts/copy-worker.mjs",
+    "dev": "node scripts/copy-worker.mjs && vite",
+    "build": "node scripts/copy-worker.mjs && vite build",
+    "preview": "vite preview",
+    "deploy": "node scripts/deploy-pages.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "sample": "node scripts/generate-sample-pdf.mjs"
+  },
+  "dependencies": {
+    "pdfjs-dist": "4.10.38"
+  },
+  "devDependencies": {
+    "vite": "5.4.21",
+    "vitest": "2.1.9"
+  }
+}

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+
+# Local test copy of a copyrighted study guide. The reader opens any PDF with
+# the file picker, so this stays out of the repository and the public site.
+public/test/

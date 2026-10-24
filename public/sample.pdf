@@ -1,0 +1,225 @@
+%PDF-1.5
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 15 0 R /PageMode /UseOutlines >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 8 0 R 9 0 R 10 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Title (The Quiet Art of Reading) /Author (Reflow Reader) /Subject (A sample for the Reflow Reader) /Creator (pdfreader sample generator) /Producer (pdfreader) >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> /Contents 11 0 R >>
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> /XObject << /Im1 19 0 R >> >> /Contents 12 0 R >>
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> /Contents 13 0 R >>
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> /Contents 14 0 R >>
+endobj
+11 0 obj
+<< /Length 1901 >>
+stream
+BT 0.45 0.42 0.36 rg /F1 8 Tf 1 0 0 1 72 758 Tm (THE QUIET ART OF READING) Tj ET
+BT /F2 26 Tf 1 0 0 1 72 714 Tm (The Quiet Art of Reading) Tj ET
+BT /F3 12 Tf 1 0 0 1 72 690 Tm (A sample document for the Reflow Reader) Tj ET
+0.55 0.18 0.10 rg 72 672 m 240 672 l S
+BT /F1 12 Tf 1 0 0 1 72 646 Tm (The Reflow Reader takes the fixed geometry of a PDF and turns it) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 630 Tm (into a stream of text that can be read like an EPUB. Instead of) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 614 Tm (pinching and zooming around a fixed page, you can change the type) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 598 Tm (size, line length and theme, and let the words settle into a shape) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 582 Tm (that suits the screen in front of you.) Tj ET
+BT /F1 12 Tf 1 0 0 1 90 552 Tm (Extraction is only half the work. Reading order, paragraph) Tj ET
+BT /F1 12 Tf 1 0 0 1 90 536 Tm (detection and running-head removal are all heuristics, and the best) Tj ET
+BT /F1 12 Tf 1 0 0 1 90 520 Tm (result comes from combining several weak signals rather than trusting) Tj ET
+BT /F1 12 Tf 1 0 0 1 90 504 Tm (any single measurement. This paragraph is indented to demonstrate) Tj ET
+BT /F1 12 Tf 1 0 0 1 90 488 Tm (how the reader finds a new paragraph without a large vertical gap.) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 458 Tm (This sentence contains an exam-) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 442 Tm (ple of a word split across two lines, which the reflow engine) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 426 Tm (repairs before it reaches your eyes.) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 396 Tm (No document ever leaves this browser tab. The file is read with the) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 380 Tm (File API, parsed by pdf.js inside the page, and cached only in local) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 364 Tm (storage. There is no account, no upload and no analytics.) Tj ET
+BT 0.4 0.38 0.33 rg /F1 9 Tf 1 0 0 1 300 38 Tm (1) Tj ET
+
+endstream
+endobj
+12 0 obj
+<< /Length 3665 >>
+stream
+BT 0.45 0.42 0.36 rg /F1 8 Tf 1 0 0 1 72 758 Tm (THE QUIET ART OF READING) Tj ET
+BT /F2 19 Tf 1 0 0 1 72 728 Tm (Two Columns, One Reading Order) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 698 Tm (Magazines, journals and academic papers) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 684 Tm (often set their body text in two or more) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 670 Tm (columns. A naive extractor reads straight) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 656 Tm (across the page, producing sentences that) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 642 Tm (jump between unrelated paragraphs. The) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 628 Tm (reader instead looks for a vertical) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 614 Tm (gutter, groups the lines on either side,) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 600 Tm (and reads the left column from top to) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 586 Tm (bottom before moving to the right column.) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 565 Tm (Wide headings split a page into horizontal) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 551 Tm (bands. Within each band the columns are) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 537 Tm (read in order. This is enough for most) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 523 Tm (newspapers, journals and reports. Complex) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 509 Tm (grids, tables and sidebars remain outside) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 495 Tm (the model.) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 474 Tm (A second paragraph in the left column) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 460 Tm (illustrates the indentation cue. The) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 446 Tm (reader also notices the change in line) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 432 Tm (length and the end of a sentence. No) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 418 Tm (single signal decides where a paragraph) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 404 Tm (ends.) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 698 Tm (The right column begins here. In the) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 684 Tm (original PDF it sits beside the left) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 670 Tm (column, but in the reading view it simply) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 656 Tm (follows it. The small page label above) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 642 Tm (each section lets you compare the two) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 628 Tm (representations when something looks) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 614 Tm (wrong.) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 593 Tm (Headers and footers are detected by) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 579 Tm (sampling pages across the document. A line) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 565 Tm (that recurs in the same margin on enough) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 551 Tm (pages is dropped from the reading view.) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 537 Tm (Page numbers are removed on sight. Both) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 523 Tm (behaviours can be switched off.) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 502 Tm (The sample on this page deliberately) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 488 Tm (repeats its running head and page number) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 474 Tm (so that you can toggle the option in) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 460 Tm (Settings and watch them disappear or) Tj ET
+BT /F1 10 Tf 1 0 0 1 330 446 Tm (return. This line is short.) Tj ET
+BT /F2 12 Tf 1 0 0 1 72 380 Tm (Typography is a set of choices for every reader and screen) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 356 Tm (Serif, sans or a dyslexia-friendly face; a tighter or looser line height; a narrow measure) Tj ET
+BT /F1 10 Tf 1 0 0 1 72 342 Tm (or a generous one. All of it can be changed while keeping your place in the document.) Tj ET
+q 240 0 0 150 186 160 cm /Im1 Do Q
+BT /F1 9 Tf 1 0 0 1 186 142 Tm (Figure 1. A raster image is kept in the reading order of the page.) Tj ET
+BT 0.4 0.38 0.33 rg /F1 9 Tf 1 0 0 1 300 38 Tm (2) Tj ET
+
+endstream
+endobj
+13 0 obj
+<< /Length 2031 >>
+stream
+BT 0.45 0.42 0.36 rg /F1 8 Tf 1 0 0 1 72 758 Tm (THE QUIET ART OF READING) Tj ET
+BT /F2 19 Tf 1 0 0 1 72 728 Tm (What the Reader Can Do) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 698 Tm (Open a PDF with the file picker or drag it onto the window. The title, page) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 682 Tm (count and reading position are remembered for that document, keyed by a hash) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 666 Tm (of its contents. Reopening the same file returns you to the same place.) Tj ET
+BT /F2 15 Tf 1 0 0 1 72 632 Tm (Reading controls) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 608 Tm (Use the arrow keys, Page Up and Page Down, Space, Home and End. On a phone, swipe) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 592 Tm (sideways in paginated mode. The progress bar and the page box at the bottom can) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 576 Tm (take you anywhere in the document. The contents drawer is built from the PDF) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 560 Tm (outline when one exists.) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 530 Tm (Text remains selectable, so the browsers own Find command works. The in-book) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 514 Tm (search scans every page in the background and highlights matches on the page.) Tj ET
+BT /F2 15 Tf 1 0 0 1 72 480 Tm (A note on quality) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 456 Tm (Reflow is a heuristic. Scanned pages have no text layer and are shown as images) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 440 Tm (with an explanation. Pages with very little text fall back to the original view.) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 424 Tm (Pages where the column model is uncertain keep their reflow but show a warning) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 408 Tm (and a one-click switch. You can always compare against the page itself.) Tj ET
+BT /F1 8 Tf 1 0 0 1 72 362 Tm (1. This footnote is set in a smaller size and is styled as small print rather than body copy.) Tj ET
+BT /F1 8 Tf 1 0 0 1 72 350 Tm (2. It is still selectable and searchable, like every other piece of extracted text.) Tj ET
+BT 0.4 0.38 0.33 rg /F1 9 Tf 1 0 0 1 300 38 Tm (3) Tj ET
+
+endstream
+endobj
+14 0 obj
+<< /Length 1324 >>
+stream
+0.93 0.90 0.83 rg 0 0 612 792 re f
+0.98 0.96 0.91 rg 66 66 480 660 re f
+0.82 0.78 0.69 rg 96 92 420 608 re f
+0.30 0.28 0.24 rg 120 620 220 34 re f
+0.30 0.28 0.24 rg 120 570 360 12 re f
+0.45 0.42 0.36 rg 120 548 330 8 re f
+0.45 0.42 0.36 rg 120 534 350 8 re f
+0.45 0.42 0.36 rg 120 520 300 8 re f
+0.55 0.50 0.42 rg 120 470 390 2 re f
+0.45 0.42 0.36 rg 120 448 350 8 re f
+0.45 0.42 0.36 rg 120 434 365 8 re f
+0.45 0.42 0.36 rg 120 420 280 8 re f
+0.45 0.42 0.36 rg 120 406 340 8 re f
+0.45 0.42 0.36 rg 120 392 390 8 re f
+0.55 0.50 0.42 rg 120 370 390 2 re f
+0.45 0.42 0.36 rg 120 348 355 8 re f
+0.45 0.42 0.36 rg 120 334 370 8 re f
+0.45 0.42 0.36 rg 120 320 260 8 re f
+0.45 0.42 0.36 rg 120 306 345 8 re f
+0.55 0.50 0.42 rg 120 280 390 2 re f
+0.45 0.42 0.36 rg 120 258 360 8 re f
+0.45 0.42 0.36 rg 120 244 325 8 re f
+0.45 0.42 0.36 rg 120 230 350 8 re f
+0.45 0.42 0.36 rg 120 216 300 8 re f
+0.22 0.20 0.18 rg 120 130 150 70 re f
+0.98 0.96 0.91 rg 130 140 3 50 re f
+0.98 0.96 0.91 rg 138 140 2 50 re f
+0.98 0.96 0.91 rg 146 140 4 50 re f
+0.98 0.96 0.91 rg 157 140 2 50 re f
+0.98 0.96 0.91 rg 165 140 3 50 re f
+0.98 0.96 0.91 rg 175 140 2 50 re f
+0.98 0.96 0.91 rg 184 140 4 50 re f
+0.98 0.96 0.91 rg 195 140 2 50 re f
+0.98 0.96 0.91 rg 203 140 3 50 re f
+0.45 0.42 0.36 rg 300 170 200 8 re f
+0.45 0.42 0.36 rg 300 154 170 6 re f
+
+endstream
+endobj
+15 0 obj
+<< /Type /Outlines /First 16 0 R /Last 18 0 R /Count 3 >>
+endobj
+16 0 obj
+<< /Title (Chapter One: A Stream of Text) /Parent 15 0 R /Dest [7 0 R /XYZ 0 792 null] /Next 17 0 R >>
+endobj
+17 0 obj
+<< /Title (Chapter Two: Two Columns) /Parent 15 0 R /Dest [8 0 R /XYZ 0 792 null] /Prev 16 0 R /Next 18 0 R >>
+endobj
+18 0 obj
+<< /Title (Chapter Three: What the Reader Can Do) /Parent 15 0 R /Dest [9 0 R /XYZ 0 792 null] /Prev 17 0 R >>
+endobj
+19 0 obj
+<< /Type /XObject /Subtype /Image /Width 320 /Height 200 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter [/ASCIIHexDecode /FlateDecode] /Length 2449 >>
+stream
+789cedd4b1addd461884d172142a1714ab8617b806c185b810c72ac025b810a70a98fa35203cf252e4fcc33dc009375860e7dbede77f1b00000000000000cff5ef3f7f0343bcd06ffc0f01b69762d42f0ca15fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a5df65fdf8e36bfc0e9ca4dfc77beff4a8f89dd949bf8ff442b35a6ea4df27f98dd90ab9827e9fe1d272553c967edbdd56ae8a07d26faf48b92a1e45bfa5e2f14a7802fdd68937abe239f4db259eaa8447d16f9178a4129e46bf2de2794a7820fd56888729e199f43b5f3c49098fa5dfe1e2314a7832fd4e16cf50c2c3e977ac7880129e4fbf63c5ebd3ef7cfa9d299e9e842be877a07874126ea1df81e2c5e9b7857ea789e726e122fa9d26de9a7e8be87794786812eea2df51e295e9b78b7ee7882726e13afa9d23de977eebe8778e785ffaada3df21e27149b8917e878897a5df46fa1d225e967e1be977887859fa6da4df09e25949b8947e278837a5df52fa9d20de947e4be977827853fa2da5df09e24de9b7947e278837a5df52fa9d20de947e4be977827853fa2da5dfb8785012eea5df09e24189b7947e278837a5df52fa9d20de947e4be977827853fa2da5df09e24de9b7947e278837a5df52fa9d20de947e4be977827853fa2da5df21e25989b7917e878897a5df46fa1d225e967e1be977887859fa6da4df39e27189b78e7ee788f7a5df3afa9d23de977eebe877947862e2eda2df51e295e9b78b7ea7898726de22fa9d26de9a7e8be877a0786ee26da1df81e2c5e9b7857e678a4727de0afa1d2b9e9e78e7d3ef58f1faf43b9f7e278b0728dee1f43b5c3c43f14ea6dff9e2318a772cfd56882729de99f4db221ea67807d26f91789ee29d46bf5de2918a7714fdd689a72ade39f45b2adeac7227d06f2ff1a2df76ca5d997e9f41b96bd2ef93287735fa7d24d92e42bf8fa7d907d3efb274fa00fa855efa855efa855efa855efa855efa855efa855efa855efa855efa855efa855efa855efa855e0feef7cbe74ff0b2f880f50b2f8b0f58bf1fbe4b7c248c151ff04531ea9715c4077c518cfa6505f1015f14a37e59417cc017c5a85f56101ff04531ea9715c4077c518cfa6505f1015f14a37e59417cc017c5a85f56101ff04531ea9715c4077c518cfa6505f1015f14a37e59417cc017c5d8de2fec111fb07ee165f1012fde2f3c9e7ea1977edf7d7ffbc682e2c33b4fbf9b7e57151fde79fadd7eddef9e33f48a0fef3cfd6efa5d557c78e7e977d3efaae2c33b4fbf9b7e57151fde79faddf4bbaaf8f0ced3efa6df55c587779e7e37fdae2a3ebcf3f4bbe97755f1e19da7df4dbfab8a0fef3cfd6eda5c557c78e7e977d3efaae2c33b4fbfd04bbfd04bbfd04bbf87fcf5e71bc3c5477227fd1e121f271f8a8fe44efa3d64cf66e2035e5c7c2477d2ef217b36131ff0e2e223b9937e0fd9b399f88017171fc99df47bc89ecdc407bcb8f848eea4df43f66c263ee0c5c5477227fd1eb26733f1012f2e3e923be9f790f838f9507c2477d2ef21f171f2a1f848eea45fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8a55fe8f55abfc010f13f04000000000000804bfd0f2577d1e7>
+endstream
+endobj
+xref
+0 20
+0000000000 65535 f 
+0000000015 00000 n 
+0000000104 00000 n 
+0000000180 00000 n 
+0000000361 00000 n 
+0000000458 00000 n 
+0000000560 00000 n 
+0000000665 00000 n 
+0000000812 00000 n 
+0000000986 00000 n 
+0000001133 00000 n 
+0000001281 00000 n 
+0000003235 00000 n 
+0000006953 00000 n 
+0000009037 00000 n 
+0000010414 00000 n 
+0000010488 00000 n 
+0000010607 00000 n 
+0000010734 00000 n 
+0000010861 00000 n 
+trailer
+<< /Size 20 /Root 1 0 R /Info 3 0 R >>
+startxref
+13499
+%%EOF
