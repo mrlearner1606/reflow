@@ -1,52 +1,47 @@
 /**
  * deploy-pages.mjs
  *
- * Build the production bundle and publish it to the `gh-pages` branch, which
- * GitHub Pages serves at https://mrlearner1606.github.io/reflow/.
+ * Build the production bundle and publish it to `docs/` on the `main` branch,
+ * which GitHub Pages serves at https://mrlearner1606.github.io/reflow/.
  *
- * The build output is copied to a temporary directory first, so the working
- * tree and the main branch are never rewritten. `public/test/` (the local
- * copy of a copyrighted study guide) is removed from the published bundle.
+ * GitHub Pages is configured as "Deploy from a branch": `main` / `docs`. There
+ * is no `gh-pages` branch, and no Actions workflow is required.
+ *
+ * `public/test/` (the local copy of a copyrighted study guide) is removed from
+ * the published bundle, so it never reaches the repository.
  *
  * Usage: npm run deploy
  */
 
 import { execFileSync } from 'node:child_process';
-import { cpSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { existsSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(dirname(fileURLToPath(import.meta.url)));
 
-function run(command, args, cwd) {
-  execFileSync(command, args, { cwd, stdio: 'inherit' });
+function run(command, args) {
+  execFileSync(command, args, { cwd: root, stdio: 'inherit' });
 }
 
-run('npm', ['run', 'build'], root);
+run('npx', ['vite', 'build', '--outDir', 'docs', '--emptyOutDir']);
 
-const dist = join(root, 'dist');
-rmSync(join(dist, 'test'), { recursive: true, force: true });
-writeFileSync(join(dist, '.nojekyll'), '');
+const docs = join(root, 'docs');
+rmSync(join(docs, 'test'), { recursive: true, force: true });
+writeFileSync(join(docs, '.nojekyll'), '');
 
-const remote = execFileSync('git', ['remote', 'get-url', 'origin'], { cwd: root })
+if (!existsSync(join(docs, 'index.html'))) {
+  throw new Error('Build produced no docs/index.html — aborting deploy.');
+}
+
+run('git', ['add', '-A', 'docs']);
+const staged = execFileSync('git', ['status', '--porcelain', '--', 'docs'], { cwd: root })
   .toString()
   .trim();
-if (!remote) {
-  throw new Error('No `origin` remote. Add one with `git remote add origin <url>`.');
+if (staged) {
+  run('git', ['commit', '-m', 'Deploy Reflow', '--', 'docs']);
+} else {
+  console.log('Build output is unchanged; nothing new to commit.');
 }
-
-const stage = mkdtempSync(join(tmpdir(), 'reflow-pages-'));
-try {
-  cpSync(dist, stage, { recursive: true });
-  run('git', ['init', '-b', 'gh-pages'], stage);
-  run('git', ['config', 'user.name', 'mrlearner1606'], stage);
-  run('git', ['config', 'user.email', '112171502+mrlearner1606@users.noreply.github.com'], stage);
-  run('git', ['add', '-A'], stage);
-  run('git', ['commit', '-m', 'Deploy Reflow'], stage);
-  run('git', ['remote', 'add', 'origin', remote], stage);
-  run('git', ['push', '--force', 'origin', 'gh-pages'], stage);
-  console.log('Published the build to the gh-pages branch.');
-} finally {
-  rmSync(stage, { recursive: true, force: true });
-}
+run('git', ['push', 'origin', 'HEAD:main']);
+console.log('Published the build to docs/ on the main branch.');

@@ -41,12 +41,15 @@ Regenerate the bundled sample document:
 npm run sample    # writes public/sample.pdf
 ```
 
-Publish the static site to GitHub Pages (builds, then force-pushes `dist/` to
-the `gh-pages` branch):
+Publish the static site to GitHub Pages (builds into `docs/`, commits it to
+`main`, and pushes):
 
 ```bash
 npm run deploy    # https://mrlearner1606.github.io/reflow/
 ```
+
+GitHub Pages is configured as *Deploy from a branch*: `main`, folder `/docs`.
+There is no `gh-pages` branch and no Actions workflow to maintain.
 
 Open `http://localhost:5173`, click **Open sample**, or drop any PDF onto the
 window. The sample has four pages: prose, a two-column page with an inline
