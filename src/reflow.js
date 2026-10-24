@@ -47,9 +47,14 @@ const ARABIC_PAGE_NUMBER =
   /^(?:page\s*)?[-\u2013\u2014\s]*\d{1,4}(?:\s*(?:of|\/|[-\u2013\u2014])\s*\d{1,4})?[-\u2013\u2014\s]*$/i;
 const ROMAN_PAGE_NUMBER = /^[ivxlcdm]{1,7}$/i;
 
-/** Bullets that open a list item: filled/hollow circles, squares, dashes. */
+/**
+ * Bullets that open a list item: filled/hollow circles, squares, diamonds,
+ * triangles, checks, dashes. The study guide nests a filled square (`■`,
+ * U+25A0) under hollow circles, so leaving it out merges the whole sub-list
+ * into the parent item.
+ */
 const BULLET_MARKER =
-  /^([\u25CF\u25CB\u25C9\u25E6\u25AA\u25AB\u25B8\u25B9\u2022\u2023\u2043\u00B7*\u2013\u2014-])\s+/u;
+  /^([\u25A0\u25A1\u25AA\u25AB\u25B6\u25B7\u25BA\u25BB\u25C6\u25C7\u25CF\u25CB\u25C9\u25E6\u25B8\u25B9\u2022\u2023\u2043\u00B7*\u2013\u2014\u2713\u2714-])\s+/u;
 /**
  * Ordered markers: `1.`, `1)`, `(1)`, `a.`, `a)`, `iv.`. Uppercase letters are
  * excluded because `A. Smith` is a name, not a list item.

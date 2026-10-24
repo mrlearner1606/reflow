@@ -19,6 +19,14 @@ export const BACKGROUND_MIN_AREA = 0.35;
 export const BACKGROUND_MIN_LINES = 2;
 /** A single text line is enough when the image is this large. */
 export const BACKGROUND_SINGLE_LINE_AREA = 0.45;
+/**
+ * Small callout boxes (the pale blue `Use Cases` panels) are only a quarter of
+ * the page, but several lines of the real text layer sit on top of them. A
+ * figure this small with that much text on it is a painted background, not an
+ * illustration.
+ */
+export const BACKGROUND_DENSE_AREA = 0.12;
+export const BACKGROUND_DENSE_LINES = 3;
 
 /**
  * @param {object} placement
@@ -88,6 +96,8 @@ export function isMarginalImagePlacement({
  * @param {number} [input.minAreaRatio]
  * @param {number} [input.minLines]
  * @param {number} [input.singleLineAreaRatio]
+ * @param {number} [input.denseAreaRatio]
+ * @param {number} [input.denseLines]
  * @returns {boolean}
  */
 export function isPageBackgroundImage({
@@ -98,12 +108,15 @@ export function isPageBackgroundImage({
   minAreaRatio = BACKGROUND_MIN_AREA,
   minLines = BACKGROUND_MIN_LINES,
   singleLineAreaRatio = BACKGROUND_SINGLE_LINE_AREA,
+  denseAreaRatio = BACKGROUND_DENSE_AREA,
+  denseLines = BACKGROUND_DENSE_LINES,
 }) {
   if (!image || !(pageWidth > 0) || !(pageHeight > 0)) return false;
   if (!(image.width > 0) || !(image.height > 0)) return false;
 
   const area = image.width * image.height;
-  if (area < pageWidth * pageHeight * minAreaRatio) return false;
+  const areaRatio = area / (pageWidth * pageHeight);
+  if (areaRatio < Math.min(minAreaRatio, denseAreaRatio)) return false;
 
   const rows = Array.isArray(lines) ? lines : [];
   if (!rows.length) return false;
@@ -124,6 +137,7 @@ export function isPageBackgroundImage({
     }
   }
 
-  if (inside >= minLines) return true;
-  return inside >= 1 && area >= pageWidth * pageHeight * singleLineAreaRatio;
+  if (inside >= denseLines && areaRatio >= denseAreaRatio) return true;
+  if (inside >= minLines && areaRatio >= minAreaRatio) return true;
+  return inside >= 1 && areaRatio >= singleLineAreaRatio;
 }

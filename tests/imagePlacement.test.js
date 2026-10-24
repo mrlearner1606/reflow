@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
+  BACKGROUND_DENSE_AREA,
+  BACKGROUND_DENSE_LINES,
   BACKGROUND_MIN_AREA,
   BACKGROUND_MIN_LINES,
   BACKGROUND_SINGLE_LINE_AREA,
@@ -134,12 +136,38 @@ describe('isPageBackgroundImage', () => {
     ).toBe(false);
   });
 
-  it('keeps a figure smaller than the background threshold', () => {
+  it('drops a callout panel with the text drawn over it', () => {
+    // The pale blue `Use Cases` boxes: about a fifth of the page, but five or
+    // more lines of the real text layer sit on top of the raster.
+    const panel = { x: 46, y: 330, width: 500, height: 210 };
+    const lines = Array.from({ length: 8 }, (_, i) => ({
+      x: 70,
+      y: 500 - i * 22,
+      width: 420,
+      fontSize: 11,
+    }));
+    expect(
+      isPageBackgroundImage({ image: panel, lines, ...PAGE }),
+    ).toBe(true);
+  });
+
+  it('keeps an illustration with text only below it', () => {
     const figure = { x: 60, y: 400, width: 420, height: 300 };
     expect(
       isPageBackgroundImage({
         image: figure,
-        lines: textLines(20),
+        lines: textLines(5, { inside: false }),
+        ...PAGE,
+      }),
+    ).toBe(false);
+  });
+
+  it('keeps a figure with a single overlaid label', () => {
+    const figure = { x: 60, y: 400, width: 420, height: 300 };
+    expect(
+      isPageBackgroundImage({
+        image: figure,
+        lines: [{ x: 70, y: 690, width: 420, fontSize: 11 }],
         ...PAGE,
       }),
     ).toBe(false);
@@ -191,9 +219,11 @@ describe('isPageBackgroundImage', () => {
   });
 
   it('exposes its thresholds', () => {
-    expect(BACKGROUND_MIN_AREA).toBeGreaterThan(0);
+    expect(BACKGROUND_DENSE_AREA).toBeGreaterThan(0);
+    expect(BACKGROUND_DENSE_AREA).toBeLessThan(BACKGROUND_MIN_AREA);
     expect(BACKGROUND_MIN_AREA).toBeLessThan(BACKGROUND_SINGLE_LINE_AREA);
     expect(BACKGROUND_SINGLE_LINE_AREA).toBeLessThan(1);
     expect(BACKGROUND_MIN_LINES).toBeGreaterThanOrEqual(1);
+    expect(BACKGROUND_DENSE_LINES).toBeGreaterThan(BACKGROUND_MIN_LINES);
   });
 });

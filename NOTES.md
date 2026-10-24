@@ -102,10 +102,13 @@ the general "plain ES modules + Vitest" style, which fits a small browser app.
   never merge into a paragraph. The marginal filter keeps a numeric line when
   it shares a baseline with a title to its left, but still drops a running page
   number in the bottom margin — including one sitting beside a footer URL.
-- **Lists:** a leading bullet (`●`, `○`, `•`, `▪`, `-`, `–`) or ordered marker
-  (`1.`, `2)`, `(3)`, `a)`) opens a list item. Each item is a line; nesting
-  comes from the item's left edge relative to the previous item, so the
-  Tutorials Dojo sub-bullets at x = 90 under items at x = 54 become level 1.
+- **Lists:** a leading bullet (`●`, `○`, `•`, `▪`, `■`, `◆`, `✓`, `-`, `–`) or
+  ordered marker (`1.`, `2)`, `(3)`, `a)`) opens a list item. Each item is a
+  line; nesting comes from the item's left edge relative to the previous item,
+  so the Tutorials Dojo sub-bullets at x = 90 under items at x = 54 become
+  level 1, and the filled squares (`■`) at x = 126 under a sub-item become
+  level 2. Missing the filled square once merged a whole `Log:` sub-list into
+  its parent line.
   Wrapped lines continue at the item's text indent and are joined; a paragraph
   at the column edge flushes the list. The reader rebuilds nested `<ul>`/`<ol>`
   elements from the flat item list. Uppercase `A.` is not treated as a marker
@@ -118,7 +121,11 @@ the general "plain ES modules + Vitest" style, which fits a small browser app.
   least two of the page's text lines on top of it is a page background (an OCR
   scan, a screenshot of the content block, a watermark) and is skipped on text
   pages. A single line on top is enough when the raster covers 45 % of the
-  page. The Tutorials Dojo study guide paints a 562 x 422 screenshot of the
+  page. A smaller raster still counts when it covers at least 12 % of the page
+  and three or more text lines sit on it: the study guide paints its pale blue
+  `Use Cases` callout panels as rasters a quarter of a page tall, then sets the
+  real text on top. Figures and UI screenshots carry their own pixels, so no
+  text-layer line centre falls inside them and they stay in the flow. The Tutorials Dojo study guide paints a 562 x 422 screenshot of the
   whole content block on every page *and* keeps a real text layer; without this
   rule page 80 shows that screenshot plus its own diagram and reflowed text.
   A figure with text only above and below it has no line centres inside its

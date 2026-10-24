@@ -769,6 +769,14 @@ describe('detectListMarker', () => {
     });
     expect(detectListMarker('○ Nested item').ordered).toBe(false);
     expect(detectListMarker('• Third style').text).toBe('Third style');
+    // Filled squares open the deepest level in the study guide.
+    expect(detectListMarker('■ Responses')).toEqual({
+      ordered: false,
+      marker: '■',
+      number: null,
+      text: 'Responses',
+    });
+    expect(detectListMarker('▪ Square bullet').ordered).toBe(false);
   });
 
   it('recognizes ordered markers', () => {
@@ -820,6 +828,33 @@ describe('list blocks', () => {
       'Another sub item',
       'Second item',
     ]);
+  });
+
+  it('keeps a square-bullet sub-list under its parent item', () => {
+    const blocks = buildBlocks(
+      [
+        line('3. In a notebook:', 54, 603, 69, 10),
+        line('○ Loop over the questions.', 90, 588, 120, 10),
+        line('○ Log:', 90, 558, 21, 10),
+        line('■ Responses', 126, 543, 54, 10),
+        line('■ Latency', 126, 528, 38, 10),
+        line('■ Token counts', 126, 513, 66, 10),
+        line('4. Have your team rate responses.', 54, 498, 300, 10),
+      ],
+      { bodySize: 10, pageWidth: 612, pageNumber: 1 },
+    );
+
+    const list = blocks.find((block) => block.type === 'list');
+    expect(list.items.map((item) => item.text)).toEqual([
+      'In a notebook:',
+      'Loop over the questions.',
+      'Log:',
+      'Responses',
+      'Latency',
+      'Token counts',
+      'Have your team rate responses.',
+    ]);
+    expect(list.items.map((item) => item.level)).toEqual([0, 1, 1, 2, 2, 2, 0]);
   });
 
   it('joins wrapped lines into the item they belong to', () => {

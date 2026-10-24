@@ -111,9 +111,10 @@ every heuristic is unit-testable.
    than the body (12 pt against 11 pt, common in study guides). Bold sentences
    and run-in labels (`Note:`) stay paragraphs. Text below `0.84×` is styled as
    small print.
-6. **Lists** — a leading bullet (`●`, `○`, `•`, `▪`, `-`, `–`) or ordered marker
-   (`1.`, `2)`, `(3)`, `a)`) starts a list item. Items are grouped into nested
-   `<ul>`/`<ol>` elements by their left edge, so sub-bullets keep their level.
+6. **Lists** — a leading bullet (`●`, `○`, `•`, `▪`, `■`, `◆`, `✓`, `-`, `–`) or
+   ordered marker (`1.`, `2)`, `(3)`, `a)`) starts a list item. Items are grouped
+   into nested `<ul>`/`<ol>` elements by their left edge, so sub-bullets keep
+   their level — including the filled-square level under a hollow-circle item.
    Wrapped lines join the item they belong to, and a normal paragraph at the
    column edge closes the list.
 7. **Contents pages** — a title line and a right-aligned number on the same
@@ -162,8 +163,10 @@ that surrounds them:
   35 % of the page and has two or more text lines drawn on top of it (one line
   is enough above 45 %) is a scan with an invisible OCR layer, a screenshot of
   the content block or a watermark, not a figure; keeping it would repeat the
-  page next to its own reflowed text. An illustration with only a caption below
-  it keeps its place in the stream.
+  page next to its own reflowed text. A smaller raster with three or more lines
+  on top is the same kind of painted panel — the study guide's blue `Use Cases`
+  boxes are only a quarter of a page — so it is dropped too, while a diagram or
+  UI screenshot (whose text is part of the pixels) keeps its place.
 - The page is composited once at up to 2× scale, and each rectangle is cropped
   from that canvas to WebP (PNG fallback). Cropping the rendered page preserves
   masks, soft masks and transparency. Crops are cached per page.
