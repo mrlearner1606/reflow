@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-font="serif" data-justify="false">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="description"
+      content="A local-first PDF reader that reflows text like an EPUB. Files never leave your browser."
+    />
+    <title>Reflow — a PDF reader for reading</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23211f1a'/%3E%3Cpath d='M9 8h9l5 5v11H9z' fill='%23f7f1e3'/%3E%3Cpath d='M18 8v5h5' fill='%23d9c9a8'/%3E%3Cpath d='M12 17h8M12 20h6' stroke='%23211f1a' stroke-width='1.4'/%3E%3C/svg%3E"
+    />
+    <script type="module" crossorigin src="./assets/index-Q5rkGOZ6.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-IKhGYJQc.css">
+  </head>
+  <body>
+    <div class="app">
+      <header id="topbar" class="topbar" hidden>
+        <button id="btnOpen" class="brand-button" title="Open another PDF">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+            <path d="M4 5.5h6l2 2h8v11H4z" />
+          </svg>
+          <span class="brand-name">Reflow</span>
+        </button>
+        <span class="topbar-divider" aria-hidden="true"></span>
+        <div class="doc-title-wrap">
+          <span id="docTitle" class="doc-title"></span>
+          <span id="docMeta" class="doc-meta"></span>
+        </div>
+        <div class="topbar-actions">
+          <button id="btnToc" class="toolbar-btn" title="Contents" aria-haspopup="dialog">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+              <path d="M5 6h14M5 12h14M5 18h9" />
+            </svg>
+            <span class="toolbar-label">Contents</span>
+          </button>
+          <button id="btnSearch" class="toolbar-btn" title="Search in book">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+              <circle cx="10.5" cy="10.5" r="6.5" />
+              <path d="m15.5 15.5 4 4" />
+            </svg>
+            <span class="toolbar-label">Search</span>
+          </button>
+          <button id="btnOriginal" class="toolbar-btn" title="View the original page">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+              <rect x="5" y="3.5" width="14" height="17" rx="1.5" />
+              <path d="M8.5 8h7M8.5 11.5h7M8.5 15h4" />
+            </svg>
+            <span class="toolbar-label">Original</span>
+          </button>
+          <button
+            id="btnPaged"
+            class="toolbar-btn"
+            title="Switch between scrolling and pages"
+            aria-pressed="false"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+              <rect x="3.5" y="5" width="7.5" height="14" rx="1" />
+              <rect x="13" y="5" width="7.5" height="14" rx="1" />
+            </svg>
+            <span class="toolbar-label">Paginated</span>
+          </button>
+          <button id="btnSettings" class="toolbar-btn toolbar-btn-accent" title="Reading settings">
+            <span class="aa-glyph" aria-hidden="true">Aa</span>
+            <span class="toolbar-label">Settings</span>
+          </button>
+        </div>
+      </header>
+
+      <div id="extractionBar" class="extraction-bar" hidden aria-hidden="true">
+        <div id="extractionFill" class="extraction-fill"></div>
+      </div>
+
+      <main id="readerMount" class="reader-stage" hidden aria-label="Reflowed document text"></main>
+
+      <footer id="statusbar" class="statusbar" hidden>
+        <div class="progress-track" aria-hidden="true">
+          <div id="progressFill" class="progress-fill"></div>
+        </div>
+        <div class="status-inner">
+          <button id="prevScreen" class="status-button" title="Previous page" aria-label="Previous page">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+              <path d="m14.5 6-6 6 6 6" />
+            </svg>
+          </button>
+          <span id="pageReadout" class="page-readout">Page 1</span>
+          <button id="nextScreen" class="status-button" title="Next page" aria-label="Next page">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+              <path d="m9.5 6 6 6-6 6" />
+            </svg>
+          </button>
+          <span class="status-divider" aria-hidden="true"></span>
+          <form id="gotoForm" class="goto-form">
+            <label for="gotoPage">Go to</label>
+            <input id="gotoPage" type="number" min="1" inputmode="numeric" autocomplete="off" />
+            <button type="submit" class="goto-button">Go</button>
+          </form>
+          <span class="status-spacer"></span>
+          <span id="extractionStatus" class="extraction-status"></span>
+        </div>
+      </footer>
+    </div>
+
+    <section id="landing" class="landing">
+      <div class="landing-grain" aria-hidden="true"></div>
+      <div class="landing-inner">
+        <div class="landing-copy">
+          <p class="eyebrow">Local-first reading</p>
+          <h1>Read PDFs like <em>books</em>.</h1>
+          <p class="lede">
+            Fixed pages become a single stream of text. Tune the type, the measure
+            and the light. Your file stays on this device.
+          </p>
+          <div class="landing-actions">
+            <button id="chooseFile" class="button button-primary">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon">
+                <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5" />
+                <path d="M5 15v4h14v-4" />
+              </svg>
+              Choose a PDF
+            </button>
+            <button id="openSample" class="button button-quiet">Open the sample</button>
+          </div>
+          <p id="landingError" class="landing-error" role="alert" hidden></p>
+          <p class="privacy-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="icon icon-small">
+              <rect x="5" y="10" width="14" height="10" rx="2" />
+              <path d="M8.5 10V7.5a3.5 3.5 0 0 1 7 0V10" />
+            </svg>
+            No uploads, no account, no analytics. Works offline once loaded.
+          </p>
+          <ul class="feature-list" aria-label="Features">
+            <li>Reflowable text</li>
+            <li>Columns &amp; headings</li>
+            <li>Scanned-page fallback</li>
+          </ul>
+        </div>
+
+        <div class="landing-visual" aria-hidden="true">
+          <div class="paper-shadow"></div>
+          <div class="paper-sheet">
+            <div class="paper-kicker"></div>
+            <div class="paper-title"></div>
+            <div class="paper-title short"></div>
+            <div class="paper-rule"></div>
+            <div class="paper-lines">
+              <i></i><i></i><i></i><i></i><i class="short"></i>
+              <i></i><i></i><i></i><i class="medium"></i>
+              <i></i><i></i><i class="short"></i>
+            </div>
+            <div class="paper-page">14</div>
+          </div>
+          <div class="type-card">
+            <span class="type-card-label">Aa</span>
+            <span class="type-card-lines"><i></i><i></i><i></i></span>
+          </div>
+          <div class="mode-chip">
+            <span></span>
+            Reflowed
+          </div>
+        </div>
+
+        <div class="drop-hint">
+          <span>Drag a PDF anywhere on this page</span>
+        </div>
+      </div>
+    </section>
+
+    <div id="scrim" class="scrim" hidden></div>
+
+    <aside id="tocDrawer" class="drawer drawer-left" aria-hidden="true" aria-label="Contents">
+      <div class="drawer-head">
+        <div>
+          <p class="drawer-eyebrow">Navigation</p>
+          <h2>Contents</h2>
+        </div>
+        <button class="drawer-close" data-close-drawer aria-label="Close contents">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div id="tocBody" class="drawer-body">
+        <p class="drawer-empty">Open a document to see its contents.</p>
+      </div>
+    </aside>
+
+    <aside id="settingsDrawer" class="drawer drawer-right" aria-hidden="true" aria-label="Reading settings">
+      <div class="drawer-head">
+        <div>
+          <p class="drawer-eyebrow">Make it yours</p>
+          <h2>Reading settings</h2>
+        </div>
+        <button class="drawer-close" data-close-drawer aria-label="Close settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div id="settingsBody" class="drawer-body"></div>
+    </aside>
+
+    <aside id="searchDrawer" class="drawer drawer-right" aria-hidden="true" aria-label="Search in book">
+      <div class="drawer-head">
+        <div>
+          <p class="drawer-eyebrow">Find in this document</p>
+          <h2>Search</h2>
+        </div>
+        <button class="drawer-close" data-close-drawer aria-label="Close search">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="m6 6 12 12M18 6 6 18" /></svg>
+        </button>
+      </div>
+      <div class="drawer-body search-body">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon search-icon">
+            <circle cx="10.5" cy="10.5" r="6.5" />
+            <path d="m15.5 15.5 4 4" />
+          </svg>
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search the reflowed text…"
+            autocomplete="off"
+            aria-label="Search in book"
+          />
+        </div>
+        <div class="search-meta">
+          <span id="searchStatus" class="search-status" aria-live="polite">Type at least two characters.</span>
+          <div class="search-nav">
+            <button id="searchPrev" class="icon-button" title="Previous match" aria-label="Previous match" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="m6 14 6-6 6 6" /></svg>
+            </button>
+            <button id="searchNext" class="icon-button" title="Next match" aria-label="Next match" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="m6 10 6 6 6-6" /></svg>
+            </button>
+          </div>
+        </div>
+        <div id="searchResults" class="search-results"></div>
+      </div>
+    </aside>
+
+    <div id="dropOverlay" class="drop-overlay" hidden>
+      <div class="drop-card">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="drop-icon">
+          <path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5" />
+          <path d="M5 15v4h14v-4" />
+        </svg>
+        <strong>Drop to open</strong>
+        <span>Your PDF stays in this browser.</span>
+      </div>
+    </div>
+
+    <div id="opening" class="opening" hidden role="status" aria-live="polite">
+      <div class="opening-card">
+        <div class="spinner" aria-hidden="true"></div>
+        <p class="opening-eyebrow">Preparing your book</p>
+        <h2 id="openingTitle">Opening document…</h2>
+        <p id="openingStatus" class="opening-status">Reading file…</p>
+        <div class="opening-track"><div id="openingFill" class="opening-fill"></div></div>
+        <button id="openingCancel" class="text-button" type="button">Cancel</button>
+      </div>
+    </div>
+
+    <dialog id="passwordDialog" class="modal">
+      <form id="passwordForm" class="dialog-card">
+        <p class="drawer-eyebrow">Protected document</p>
+        <h2>This PDF needs a password</h2>
+        <p class="dialog-copy">
+          The password is used locally by the PDF parser and is never stored or
+          sent anywhere.
+        </p>
+        <label class="dialog-field">
+          <span>Password</span>
+          <input id="passwordInput" type="password" autocomplete="current-password" required />
+        </label>
+        <p id="passwordError" class="dialog-error" hidden>That password did not work. Try again.</p>
+        <div class="dialog-actions">
+          <button id="passwordCancel" type="button" class="button button-quiet">Cancel</button>
+          <button type="submit" class="button button-primary">Unlock</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="originalDialog" class="original-dialog">
+      <div class="original-shell">
+        <div class="original-bar">
+          <div class="original-heading">
+            <p class="drawer-eyebrow">Compare with the source</p>
+            <h2>Original page</h2>
+          </div>
+          <div class="original-tools">
+            <button id="originalPrev" class="icon-button" title="Previous page" aria-label="Previous page">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="m14.5 6-6 6 6 6" /></svg>
+            </button>
+            <span id="originalPageLabel" class="original-page-label">Page 1</span>
+            <button id="originalNext" class="icon-button" title="Next page" aria-label="Next page">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="icon"><path d="m9.5 6 6 6-6 6" /></svg>
+            </button>
+            <span class="status-divider" aria-hidden="true"></span>
+            <button id="originalZoomOut" class="icon-button" title="Zoom out" aria-label="Zoom out">−</button>
+            <span id="originalZoomLabel" class="zoom-label">Fit</span>
+            <button id="originalZoomIn" class="icon-button" title="Zoom in" aria-label="Zoom in">+</button>
+            <button id="originalClose" class="button button-quiet original-close">Close</button>
+          </div>
+        </div>
+        <div id="originalCanvasWrap" class="original-canvas-wrap">
+          <canvas id="originalCanvas"></canvas>
+          <div id="originalLoading" class="original-loading">Rendering page…</div>
+        </div>
+      </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <input id="fileInput" type="file" accept="application/pdf,.pdf" hidden />
+
+  </body>
+</html>
